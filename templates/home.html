@@ -5,6 +5,11 @@
     {%if user.is_authenticated %}
        <h1>Hola {{user.username}}</h1> 
 
+    {% if user.is_superuser %}
+        <h2>Eres superusuario</h2>
+    {% endif %}
+
+
        <hr>
         <form action="{% url 'logout' %}" method="post">
             {% csrf_token %}
@@ -13,11 +18,15 @@
 
         </form>
 
+        <a href="{% url 'password_change' %}">Cambiar contraseña</a>
+
 
     {% else %}
 
     <h1>No estas logeado</h1>
-    <a href="{% url 'login' %}">Login</a>
+    <a href="{% url 'login' %}">Login</a> <br>
+    <a href="{% url 'signup' %}">Registrarse</a> <br>
+    <a href="{% url 'password_reset' %}">Restablecer contraseña</a>
 
     {% endif %}
 
