@@ -1,9 +1,41 @@
-<h1>Log in</h1>
+{% extends 'base_login.html' %}
 
-<form method="post">
+{% block contenido %}
 
-    {% csrf_token %}
-    {{form.as_p}}
-    <button type="submit">Log in</button>
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="p-5">
+            <div class="text-center">
+                <h1 class="h4 text-gray-900 mb-4">¡Bienvenido de vuelta!</h1>
+            </div>
+            <form class="user" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <input type="text" class="form-control form-control-user" name="username" autofocus id="id_username" required placeholder="Nombre de usuario...">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control form-control-user" name="password" id="id_password" placeholder="Contraseña">
+                </div>
+                <div class="form-group">
+                    <div class="custom-control custom-checkbox small">
+                        <input type="checkbox" class="custom-control-input" id="customCheck">
+                        <label class="custom-control-label" for="customCheck">Recordar mis datos</label>
+                    </div>
+                </div>
+                <button type="submit" href="index.html" class="btn btn-primary btn-user btn-block">
+                    Iniciar sesión
+                </button>
+            </form>
+            <hr>
+            <div class="text-center">
+                <a class="small" href="forgot-password.html">¿Has olvidado tu contraseña?</a>
+            </div>
+            <div class="text-center">
+                <a class="small" href="register.html">Crear una nueva cuenta!</a>
+            </div>
+        </div>
+    </div>
+</div>
 
-</form>
+
+{% endblock %}
